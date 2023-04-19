@@ -5,11 +5,12 @@ import axios from "axios";
 const App = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [prediction, setPrediction] = useState(null);
-  //const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
-    //setImage(e.target.files[0]);
+
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   const handlePredict = () => {
@@ -33,13 +34,19 @@ const App = () => {
     <div className="App">
       <h1> Haemoprotozoan Disease Prediction</h1>
       <h3> Upload your image here </h3>
-
-      <input
-        type="file"
-        accept="image/*"
-        name="image"
-        onChange={handleFileChange}
-      />
+      <div>
+        {image && (
+          <img alt="preview image" width={300} height={300} src={image} />
+        )}
+      </div>
+      <div>
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          onChange={handleFileChange}
+        />
+      </div>
       <button onClick={handlePredict}>Predict</button>
       {prediction && (
         <div>

@@ -2,8 +2,13 @@
   display: grid;
   place-items: center;
   text-align: center;
+  padding: 20px;
 }
 
 .App-header {
   color: black;
+}
+
+input {
+  display: inline-block;
 }
