@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div className="App">
       <h1> Haemoprotozoan Disease Prediction</h1>
-      <h3> Upload your image here </h3>
+      <h3> Upload the cattle bloodsmear image </h3>
       <div>
         {image && (
           <img alt="preview image" width={300} height={300} src={image} />
@@ -41,6 +41,8 @@ const App = () => {
       </div>
       <div>
         <input
+          title=""
+          id="getFile"
           type="file"
           accept="image/*"
           name="image"
@@ -50,8 +52,8 @@ const App = () => {
       <button onClick={handlePredict}>Predict</button>
       {prediction && (
         <div>
-          <h2>Prediction Result:</h2>
-          <p>{prediction}</p>
+          <h1>Prediction Result:</h1>
+          <h3>{prediction}</h3>
         </div>
       )}
     </div>
