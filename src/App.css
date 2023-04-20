@@ -1,3 +1,7 @@
+body,
+html {
+  font-family: "Inter", sans-serif;
+}
 .App {
   display: grid;
   height: 100vh;
@@ -14,7 +18,12 @@ main {
   flex-direction: column;
   justify-content: center;
 }
-
+h1 {
+  font-size: 4vh;
+}
+h2 {
+  font-size: 3vh;
+}
 #getFile {
   text-align-last: center;
   margin-top: 20px;

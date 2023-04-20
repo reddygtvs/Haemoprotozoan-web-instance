@@ -36,7 +36,7 @@ const App = () => {
         <h1> Haemoprotozoan Disease Prediction</h1>
       </header>
       <main>
-        <h3> Upload the cattle bloodsmear image </h3>
+        <h2> Upload the cattle bloodsmear image </h2>
 
         {image && (
           <img alt="preview image" width={300} height={300} src={image} />
@@ -61,7 +61,7 @@ const App = () => {
         )}
       </main>
       <footer>
-        <p>Batch 2 | Final Year Project</p>
+        <p style={{ fontSize: "2vh" }}>Batch 2 | Final Year Project</p>
       </footer>
     </div>
   );
