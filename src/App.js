@@ -32,14 +32,16 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1> Haemoprotozoan Disease Prediction</h1>
-      <h3> Upload the cattle bloodsmear image </h3>
-      <div>
+      <header>
+        <h1> Haemoprotozoan Disease Prediction</h1>
+      </header>
+      <main>
+        <h3> Upload the cattle bloodsmear image </h3>
+
         {image && (
           <img alt="preview image" width={300} height={300} src={image} />
         )}
-      </div>
-      <div>
+
         <input
           title=""
           id="getFile"
@@ -48,14 +50,19 @@ const App = () => {
           name="image"
           onChange={handleFileChange}
         />
-      </div>
-      <button onClick={handlePredict}>Predict</button>
-      {prediction && (
         <div>
-          <h1>Prediction Result:</h1>
-          <h3>{prediction}</h3>
+          <button onClick={handlePredict}>Predict</button>
         </div>
-      )}
+        {prediction && (
+          <div>
+            <h1>Prediction Result:</h1>
+            <h3>{prediction}</h3>
+          </div>
+        )}
+      </main>
+      <footer>
+        <p>Batch 2 | Final Year Project</p>
+      </footer>
     </div>
   );
 };
