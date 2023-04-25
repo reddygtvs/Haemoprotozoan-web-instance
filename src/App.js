@@ -9,6 +9,7 @@ const App = () => {
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
+    setPrediction(null);
 
     setImage(URL.createObjectURL(e.target.files[0]));
   };
