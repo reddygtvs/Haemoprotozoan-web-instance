@@ -6,10 +6,16 @@ const App = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [prediction, setPrediction] = useState(null);
   const [image, setImage] = useState(null);
+  const [pred, setPred] = useState(null);
+  const [disease, setDisease] = useState(null);
+
+  const checkPos = "Blood sample has haemoprotozoan infection";
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
     setPrediction(null);
+    setPred(null);
+    setDisease(null);
 
     setImage(URL.createObjectURL(e.target.files[0]));
   };
@@ -26,6 +32,28 @@ const App = () => {
       })
       .then((res) => {
         setPrediction(res.data.prediction);
+        if (res.data.prediction === checkPos) {
+          return handleClassify();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleClassify = () => {
+    const formData = new FormData();
+    setPred("Disease Type:");
+    setDisease("...Fetching");
+    formData.append("image", selectedFile);
+    axios
+      .post("http://127.0.0.1:5000/classify", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        setDisease(res.data.prediction);
       })
       .catch((err) => {
         console.error(err);
@@ -59,6 +87,8 @@ const App = () => {
           <div>
             <h1>Prediction Result:</h1>
             <h3>{prediction}</h3>
+            <h1>{pred}</h1>
+            <h3>{disease}</h3>
           </div>
         )}
       </main>
